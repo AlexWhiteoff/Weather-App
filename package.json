@@ -1,0 +1,36 @@
+{
+    "name": "weather-app",
+    "version": "1.0.0",
+    "description": "Weather application using Node.js and Express.js",
+    "main": "src/app.js",
+    "scripts": {
+        "test": "test",
+        "start": "node src/app.js",
+        "dev": "nodemon src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AlexWhiteoff/Weather-App.git"
+    },
+    "keywords": [
+        "weather",
+        "app",
+        "application",
+        "location",
+        "openweathermap"
+    ],
+    "author": "Білий Олександр",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/AlexWhiteoff/Weather-App/issues"
+    },
+    "homepage": "https://github.com/AlexWhiteoff/Weather-App#readme",
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "hbs": "^4.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
+}
