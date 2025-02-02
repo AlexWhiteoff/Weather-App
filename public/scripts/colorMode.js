@@ -1,34 +1,20 @@
 const toggleColorModeButton = document.getElementById("toggleColorMode");
 const html = document.documentElement;
 
-const colorModeScheme = () => {
-    let colorMode = html.getAttribute("data-bs-theme");
-
-    if (colorMode === "dark") {
-        toggleColorModeButton.innerHTML = '<i class="bi bi-moon-stars"></i>';
-    } else {
-        toggleColorModeButton.innerHTML = '<i class="bi bi-sun"></i>';
-    }
-};
-
 const applyColorMode = (colorMode) => {
-    console.log("colorMode changed to: " + colorMode);
-    html.setAttribute("data-bs-theme", colorMode);
     localStorage.setItem("color-mode", colorMode);
-    colorModeScheme();
+    html.setAttribute("data-bs-theme", colorMode);
+    toggleColorModeButton.innerHTML =
+        colorMode === "dark" ? '<i class="bi bi-moon-stars"></i>' : '<i class="bi bi-sun"></i>';
 };
 
-(() => {
-    let colorMode = localStorage.getItem("color-mode");
+const colorMode =
+    localStorage.getItem("color-mode") ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-    if (!colorMode) {
-        colorMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-
-    applyColorMode(colorMode);
-})();
+applyColorMode(colorMode);
 
 toggleColorModeButton.addEventListener("click", () => {
-    let colorMode = document.documentElement.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
-    applyColorMode(colorMode);
+    const currentMode = document.documentElement.getAttribute("data-bs-theme");
+    applyColorMode(currentMode === "dark" ? "light" : "dark");
 });
